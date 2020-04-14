@@ -1,14 +1,14 @@
-https://code.visualstudio.com/ - Code Editor
+https://code.visualstudio.com/ - Code Editor - Free nice code friendly editor
 https://git-scm.com/ -- Download Git
 
-git config --global user.name Derek
-git config --global user.name
-git config --global user.email dereknguyen@gmail.com
-git config --global user.email
-git status
+git config --global   //This command modified file C:/Users/Derek/.gitconfig
+git config --global user.name Derek     //Set value for user name
+git config --global user.name           //Display the user names
+git config --global user.email dereknguyen@gmail.com   //Set user email
+git config --global user.email      //Display curent user email setting
+git status            //Use it a lot, when in doubt use it to see working tree status
 git add file1 file2     //staged
-git rm --cached file1   //unstaged
-git commit -m "message for commit" --
+git commit -m "message for commit" //Committed locally
 git log     (--oneline)  //check history
 code ~/.gitconfig        //(open git config file)
 git config --global --unset core.editor 
@@ -17,30 +17,35 @@ git show HEAD
 git show HEAD~2
 git checkout ("file1" or "." or "*") //Undo changes for one file, or all files 
 git revert <id>   //go back in time and undo the commit.
-git reset       (--mixed,--soft,--hard)   //dangerous command could lose your work
+git reset  <id>   (--mixed,--soft,--hard)   //dangerous command could lose your work completely delete
+git reset --hard <committed_id> //Completely remove upto <id>
+git reset --mixed <committed_id> //Removed up to <id> but files still availabe in MODIFIED
+git reset --soft <commited_id>   //Removed up to <id> but files still available in STAGE (git reset . & git checkout to completely remove)
 git rm -r --cached .  //Clear the cache
-git remote add origin https://github.com/Daargeek/gitProject.git
-git push origin master
-edit from GitHub then do git pull
-git pull orgin master
-git branch --set-upstream-to=origin/master master
-git branch feature-1 //Create a new branc from master
-git branch
-git checkout feature-1
-git checkout -b feature-2 //Create a new branch and switch to it immediately
-git branch -D feature-2     //Delete branch error since we are on that branch
+git remote add origin https://github.com/Daargeek/gitProject.git  //Working with Server GitHub setup the ser
+git push origin master   //GitHub login screen pops up login with free GitHub account
+edit from GitHub then do git pull   //Modified files from GitHub server
+git pull orgin master               //Download the update that was remotely modified from GitHub
+git branch --set-upstream-to=origin/master master  //This setting allows to do just git pull & git push
+git branch feature-1               //Create a new branch from master locally
+git branch                        //Display all branches locally
+git checkout feature-1             //switch the current working branch
+git checkout -b feature-2           //Create a new branch and switch to it immediately
+git branch -D feature-2     //Delete branch locally error since we are on that branch
 git push origin feature-2   //Upload new branch feature-2 to GitHub
 git pull origin feature-1   //Created feature-1 from GitHub web interface & pull from GIT client
-git checkout --track origin/feature-1
-git pull origin feature-1  //Modified file in GitGub & get update from local GIT
+git checkout --track origin/feature-1  //Get the remote branch and work locally
+git pull origin feature-1        //Modified file in GitGub & get update from local GIT
 git push origin --delete feature-2 //Delete branch from GitHub
-git checkout master
+git checkout master			//switch to the master branch
 git branch -D feature-2             //Delete branch locally on GIT
-git commit -am "Commit message" 
-git checkout master; && git merge dev //Master merged with DEV "Fast Forward merge"
+git commit -am "Commit message"      //Stage & commit in ONE command
+git checkout master; && git merge dev   //Master merged with DEV "Fast Forward merge"
 3-WAY MERGE (because changes in both places master & dev)
-$ git merge dev   ///Merge made by the 'recursive' strategy. "Changed dev into master"
+$ git merge dev       ///Merge made by the 'recursive' strategy. "Changed dev into master"
 git merge dev; Edit manually & save, git add .; git commmit; //3-way merge conflict -
-git merge --abort //stop merging keep the changes untouched
+git merge --abort     //When merge conflict stop merging keep the changes untouched
 GIT REBASE -- One way update the changed in (master into child branch). 
-git checkout feature; git rebase master  //Rebase to get changes from Master into Feature
+git checkout feature;  //Switch to the child branch that will be updated
+git rebase master  //Rebase --all changes from Master upate into Feature
+REBASE + MERGE makes 3-WAY MERGE into FAST-FORWARD merge
